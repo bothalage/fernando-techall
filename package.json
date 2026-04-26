@@ -1,0 +1,14 @@
+{
+  "name": "fernando-techall",
+  "version": "1.0.0",
+  "description": "Fernando TechAll - Full Stack Application",
+  "scripts": {
+    "start": "cd server && npm start",
+    "dev": "cd server && npm run dev",
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
+

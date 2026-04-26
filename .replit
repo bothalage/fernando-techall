@@ -13,5 +13,3 @@ deploymentTarget = "cloudrun"
 pattern = "**/{*.js,*.jsx,*.ts,*.tsx}"
 syntax = "javascript"
 
-[languages.javascript.languageServer]
-start = "typescript-language-server --stdio"
