@@ -1,0 +1,9 @@
+{{!-- subject: 🎫 Ticket #{{ticket.shortId}} received — {{ticket.subject}} --}}
+<h2 style="margin:0 0 12px;color:#fff">Hi {{user.name}}, we got your ticket</h2>
+<p style="color:#cbd5e1">Your IT support ticket has been created. Our team will review it shortly.</p>
+<table style="width:100%;margin-top:16px;border-collapse:collapse">
+  <tr><td style="padding:8px 0;color:#8aa0d6">Subject</td><td style="color:#fff">{{ticket.subject}}</td></tr>
+  <tr><td style="padding:8px 0;color:#8aa0d6">Priority</td><td style="color:#fff;text-transform:capitalize">{{ticket.priority}}</td></tr>
+  <tr><td style="padding:8px 0;color:#8aa0d6">Status</td><td style="color:#fff">{{ticket.status}}</td></tr>
+</table>
+<p style="margin-top:18px"><a href="{{appUrl}}/dashboard" style="background:linear-gradient(135deg,#3b82f6,#a855f7);color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none">View ticket</a></p>

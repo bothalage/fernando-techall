@@ -1,0 +1,9 @@
+const router = require("express").Router();
+const Portfolio = require("../models/Portfolio");
+const { protect, allow } = require("../middleware/auth");
+router.get("/", async (_req, res) => res.json(await Portfolio.find().sort("-createdAt")));
+router.get("/featured", async (_req, res) => res.json(await Portfolio.find({ featured: true }).sort("-createdAt")));
+router.post("/", protect, allow("admin"), async (req, res) => res.json(await Portfolio.create(req.body)));
+router.put("/:id", protect, allow("admin"), async (req, res) => res.json(await Portfolio.findByIdAndUpdate(req.params.id, req.body, { new: true })));
+router.delete("/:id", protect, allow("admin"), async (req, res) => { await Portfolio.findByIdAndDelete(req.params.id); res.json({ ok: true }); });
+module.exports = router;
