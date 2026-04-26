@@ -44,11 +44,20 @@ registerSockets(io);
 app.set("io", io);
 
 const PORT = process.env.PORT || 5000;
-connectDB().then(async () => {
-  const productCount = await Product.countDocuments();
-  if (productCount === 0) {
-    console.log("Seeding default products...");
-    await Product.create(defaultProducts);
+
+async function startServer() {
+  try {
+    await connectDB();
+    const productCount = await Product.countDocuments();
+    if (productCount === 0) {
+      console.log("Seeding default products...");
+      await Product.create(defaultProducts);
+    }
+  } catch (err) {
+    console.error("DB not available at startup — API will start anyway and retry in background.");
   }
+
   server.listen(PORT, () => console.log(`API + WS running on :${PORT}`));
-});
+}
+
+startServer();
