@@ -57,7 +57,7 @@ async function startServer() {
     console.error("DB not available at startup — API will start anyway and retry in background.");
   }
 
-  server.listen(PORT, () => console.log(`API + WS running on :${PORT}`));
+  server.listen(PORT, "0.0.0.0", () => console.log(`API + WS running on 0.0.0.0:${PORT}`));
 }
 
 startServer();
