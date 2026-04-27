@@ -1,9 +1,5 @@
 app = "fernando-techall-api"
-primary_region = "lax"
-
-[build]
-  builder = "paketobuildpacks/builder:base"
-  buildpacks = ["gcr.io/paketo-buildpacks/nodejs"]
+primary_region = "iad"
 
 [env]
   NODE_ENV = "production"
