@@ -103,9 +103,42 @@ git push -u origin main
 
 ## Step 6 — Final Configuration
 
-1. Copy your **Vercel frontend URL** (e.g. `https://fernando-techall.vercel.app`).
+`https://fernando-techall-git-main-bothalages-projects.vercel.app`
 2. Go back to **Render Dashboard** → your service → **Environment** → edit `CLIENT_ORIGIN` to match your Vercel URL.
 3. Redeploy the backend.
+
+---
+
+## Step 7 — Auto-Deployment to Vercel (CI/CD)
+
+Your frontend now auto-deploys to Vercel on every push to `main` when files in `client/` change.
+
+### Required GitHub Secrets
+
+Go to your GitHub repo → **Settings → Secrets and variables → Actions → New repository secret**:
+
+| Secret | How to Get It |
+|--------|---------------|
+| `VERCEL_TOKEN` | [vercel.com/account/tokens](https://vercel.com/account/tokens) → Create Token |
+| `VERCEL_ORG_ID` | Run `npx vercel@latest teams list` or find in `client/.vercel/project.json` |
+| `VERCEL_PROJECT_ID` | Run `cd client && npx vercel@latest link` then check `.vercel/project.json` |
+| `VITE_API_URL` | Your Render backend URL (e.g. `https://fernando-techall-api.onrender.com/api`) |
+
+### How It Works
+
+1. Push code to `main` branch
+2. GitHub Actions detects changes in `client/` or the workflow file
+3. Workflow installs Node.js, runs `npm ci`, builds the app
+4. Vercel CLI deploys the production build automatically
+5. No manual Vercel dashboard clicks needed
+
+### Manual Deploy (optional)
+
+```bash
+npm run deploy:vercel
+```
+
+Or trigger from GitHub: **Actions → Deploy Frontend to Vercel → Run workflow**
 
 ---
 
